@@ -6,7 +6,7 @@ import styles from './styles';
 import HeaderMovies from '../../components/HeaderMovies';
 
 export default function Movies({route, navigation}) {
-  const [id] = route.params;
+  const [id] = route.params.item;
   const [cast, setCast] = useState(null);
   const [details, setDetails] = useState(null);
 
@@ -21,7 +21,7 @@ export default function Movies({route, navigation}) {
     }
     awaitGetCredits();
   }, [id]);
-
+console.warn(id)
   useEffect(() => {
     async function awaitGetDetails() {
       try {
