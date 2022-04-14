@@ -91,7 +91,7 @@ export default function MyLists({navigation}) {
           <ScrollView contentContainerStyle={{paddingBottom: 200}}>
             {dataList &&
               dataList.map(item => (
-                <TouchableOpacity onPress={()=> navigation.navigate('ListMovies',{id:item.id})} key={item.id} style={styles.boxLista}>
+                <TouchableOpacity style={styles.boxLista} onPress={() => navigation.navigate("ListMovies", [item.id])}>
                   <View style={styles.boxDescription}>
                     <Text style={styles.nameList}>
                       {item.name.toUpperCase()}
