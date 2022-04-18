@@ -352,8 +352,6 @@ export async function removeMovieList(listId, media_id, sessionId) {
         },
       },
     );
-
-    console.log(data);
   } catch (error) {
     console.log(error);
   }

@@ -28,16 +28,34 @@ export default function TvShows({route, navigation}) {
     awaitGetTvShow();
   }, [id]);
 
-  async function awaitGetSeasonTvShow(seasonId) {
+  async function awaitGetSeasonTvShow(seasonNumber) {
     try {
-      const dataSeason = await getTvShowSeason(id, seasonId);
-      console.warn(dataSeason.episodes);
-      setNameEpisode(prevState => [...prevState, dataSeason.episodes.name]);
+      const dataSeason = await getTvShowSeason(id, seasonNumber);
+
+      setNameEpisode(prevState => [
+        ...prevState,
+        dataSeason.episodes.map(item => {
+          return item.name;
+        }),
+      ]);
     } catch (error) {
       console.warn(error);
     }
   }
 
+  async function awaitGetSeasonTvShows(...seasonId) {
+    if (seasonId.length > 0) {
+      seasonId.forEach(seasonNumber => {
+        awaitGetSeasonTvShow(seasonNumber);
+      });
+    } else {
+      null;
+    }
+  }
+
+  // useEffect(() => {
+  //   awaitGetSeasonTvShows(1, 2, 3, 4, 5);
+  // }, []);
   // const renderItem = ({item, index}) => {
   //   return (
   //     <View>
@@ -95,35 +113,27 @@ export default function TvShows({route, navigation}) {
 
   const CONTENT = [];
 
-  // useEffect(() => {
-  //   // nameSeason.map((item, index) => {
-  //   //   CONTENT.push({
-  //   //     title: item,
-  //   //     content: nameEpisode[index],
-  //   //   });
-  //   // });
-  //   console.warn(nameSeason);
-  // }, [nameSeason]);
+  const ContainerSeasons = ({tvShow, nameEpisode}) => {
+    const [activeSections, setActiveSections] = useState([]);
 
-  if (tvShow) {
-    const nameSeasonsTeeste = tvShow.seasons.map(item => {
+    const nameSeasons = tvShow.seasons.map(item => {
       return item.name;
     });
-    tvShow.seasons.forEach(item => {
-      awaitGetSeasonTvShow(item.season_number);
+
+    const numberSeasons = tvShow.seasons.map(item => {
+      return item.number_of_seasons;
     });
 
-    nameSeasonsTeeste.forEach((element, index) => {
+    nameSeasons.forEach((element, index) => {
       CONTENT.push({
         title: element,
-        // content: nameEpisode[index],
+        content: [1, 2, 3, 4, 5, 6],
       });
     });
-  }
 
-  const ContainerSeasons = () => {
-    const [activeSections, setActiveSections] = useState([]);
     const setSections = sections => {
+      // awaitGetSeasonTvShows(sections);
+      // console.warn(sections, activeSections);
       setActiveSections(sections.includes(undefined) ? [] : sections);
     };
 
@@ -144,11 +154,16 @@ export default function TvShows({route, navigation}) {
           duration={400}
           style={[styles.content, isActive ? styles.active : styles.inactive]}
           transition="slide">
-          <Animatable.Text
-            animation={isActive ? 'slide' : undefined}
-            style={{textAlign: 'center', color: '#fff'}}>
-            {section.content}
-          </Animatable.Text>
+          {section.content.map(text => {
+            return (
+              <Animatable.Text
+                key={text}
+                animation={isActive ? 'slideInDown' : undefined}
+                style={styles.contentText}>
+                {text}
+              </Animatable.Text>
+            );
+          })}
         </Animatable.View>
       );
     };
@@ -177,9 +192,9 @@ export default function TvShows({route, navigation}) {
         navigate={navigation}
         type={type}
         id={id}
-        tvShow={tvShow && tvShow}
+        tvShow={tvShow}
       />
-      <ContainerSeasons />
+      <ContainerSeasons tvShow={tvShow} nameEpisode={nameEpisode} />
     </View>
   ) : (
     <View style={styles.containerLoading}>
