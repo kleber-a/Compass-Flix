@@ -60,14 +60,18 @@ export default function MyLists({navigation}) {
   }, [name, description, dataList]);
 
   async function postList(list, sessionId) {
-    const sucess = await addList(list, sessionId);
-    if (sucess.success === true) {
-      setName('');
-      setDescription('');
-      setModalVisible(false);
-    } else {
-      Alert.alert('Algo deu errado', 'Tente Novamente');
-    }
+    if (name !== '') {
+      const sucess = await addList(list, sessionId);
+      if (sucess.success === true) {
+        setName('');
+        setDescription('');
+        setModalVisible(false);
+      } else {
+        Alert.alert('Algo deu errado', 'Tente Novamente');
+      }
+    } else Alert.alert('Nome da Lista está vazio','Por favor crie um nome para lista');
+
+    
   }
 
   async function delList(id) {
