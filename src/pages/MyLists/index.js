@@ -33,7 +33,7 @@ export default function MyLists({ navigation }) {
   const [listSucess, setListSucess] = useState(false);
   const [modalVisibleSucess, setModalVisibleSucess] = useState(false);
   const [idList, setIdList] = useState();
-
+  const [contador, setContador] = useState();
   if (listSucess) {
     setTimeout(() => {
       setListSucess(false);
@@ -110,7 +110,7 @@ export default function MyLists({ navigation }) {
                       {item.name.toUpperCase()}
                     </Text>
                     <Text style={styles.numberMovies}>
-                      {item.item_count} FILMES
+                      {item.item_count > 1 ? `${item.item_count} FILMES` : `${item.item_count} FILME`}
                     </Text>
                   </View>
                   <TouchableOpacity
@@ -156,7 +156,7 @@ export default function MyLists({ navigation }) {
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => {
-                    setModalVisible(!modalVisible);
+            setModalVisible(!modalVisible);
           }}>
           <View style={styles.backgroundModal}>
             <View style={styles.containerModal}>
@@ -166,6 +166,7 @@ export default function MyLists({ navigation }) {
 
               <View style={styles.boxInputModal}>
                 <TextInput
+                  maxLength={45}
                   style={styles.nameListModal}
                   placeholder={'Nome da Lista'}
                   value={name}
