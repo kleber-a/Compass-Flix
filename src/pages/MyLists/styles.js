@@ -1,10 +1,9 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000000',
-
   },
   text: {
     color: '#FFF',
@@ -25,6 +24,7 @@ const styles = StyleSheet.create({
   containerLista: {
     width: '100%',
     height: '100%',
+    marginTop: 34,
   },
   boxLista: {
     backgroundColor: '#8F9AFC',
@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: '#ffffff',
   },
   boxDescription: {
     width: 200,
@@ -46,7 +48,8 @@ const styles = StyleSheet.create({
   numberMovies: {
     color: 'white',
     fontSize: 12,
-    fontWeight: '400',
+    fontWeight: 'bold',
+    fontFamily: 'Open Sans',
   },
   nameList: {
     width: 160,
@@ -54,12 +57,13 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 12,
     fontWeight: '400',
+    fontFamily: 'Open Sans',
   },
 
   del: {
     backgroundColor: '#E9A6A6',
     width: 30,
-    height: 80,
+    height: 78,
     alignSelf: 'flex-end',
     justifyContent: 'center',
     alignItems: 'center',
@@ -79,12 +83,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: '#E9A6A6',
     borderRadius: 30,
+    borderColor: '#FFFF',
+    borderStyle: 'solid',
+    borderWidth: 1,
     width: 51,
     height: 51,
     alignItems: 'center',
     alignSelf: 'flex-end',
     justifyContent: 'center',
-
+    zIndex: 2,
+    elevation: 6,
+    shadowColor: '#100',
+    shadowOpacity: 0.2,
+    shadowRadius: 30,
   },
   //Início Modal
   backgroundModal: {
@@ -96,99 +107,111 @@ const styles = StyleSheet.create({
   },
   containerModal: {
     width: '90%',
-    height: 200,
+    paddingHorizontal: 21,
+    paddingBottom: 21,
+    paddingTop: 11,
+    height: 175,
     backgroundColor: 'white',
     alignItems: 'center',
-    borderRadius: 30,
-    marginVertical: '50%',
+    borderRadius: 25,
   },
+  //Inicio Box Text
   boxTextModal: {
-    //Inicio Box Text
     width: '100%',
-    height: '20%',
+    marginBottom: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
   textModal: {
     color: 'black',
-    fontSize: 17,
-    fontWeight: '900',
+    fontSize: 14,
+    fontWeight: '700',
   },
   //Fim Box Text
 
-  boxInputModal: {
-    //Inicio Box Input
-    width: '100%',
-    height: '50%',
-    alignItems: 'center',
-  },
+  //Inicio Box Input
   nameListModal: {
-    backgroundColor: '#C4C4C4',
-    width: '80%',
-    height: 40,
-    borderRadius: 10,
-    paddingHorizontal: 20,
+    backgroundColor: 'rgba(196, 196, 196, 0.35)',
+    width: '100%',
+    height: 28,
+    borderRadius: 5,
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    color: '#000000',
+    fontFamily: 'Souce Sans Pro',
     fontSize: 12,
   },
   descriptionListModal: {
-    backgroundColor: '#C4C4C4',
-    width: '80%',
-    height: 60,
-    marginTop: 9,
-    borderRadius: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 2,
+    lineHeight: 15,
+    backgroundColor: 'rgba(196, 196, 196, 0.35)',
+    width: '100%',
+    height: 42,
+    marginTop: 5,
+    borderRadius: 5,
+    fontFamily: 'Souce Sans Pro',
     fontSize: 12,
+    color: '#000',
   },
   //Fim Box Input
   boxButtonModal: {
+    marginTop: 17,
     flexDirection: 'row',
     width: '100%',
-    height: '30%',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   },
   buttonCancelModal: {
-    width: 105,
-    height: 28,
+    marginRight: 15,
+    width: 80,
+    height: 20,
     backgroundColor: 'white',
-    borderRadius: 7,
-    borderWidth: 2,
+    borderRadius: 5,
+    borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonSaveModal: {
-    width: 105,
-    height: 28,
-    borderRadius: 7,
+    width: 80,
+    height: 20,
+    borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },
   textButtonModal: {
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: '700',
+    color: 'black',
   },
   //Fim Modal
-
   containerAnimated: {
     width: '90%',
-    height: 40,
-    backgroundColor: '#1ed92b',
-    borderRadius: 10,
+    height: 30,
+    backgroundColor: 'rgba(15, 200, 30, 0.95)',
+    borderColor: 'rgba(25, 255, 60, 0.95)',
+    borderWidth: 1,
+    borderRadius: 5,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    bottom: 100
+    bottom: 10,
+    zIndex: 3,
+    elevation: 8,
+    shadowColor: '#010',
+    shadowOpacity: 0.9,
+    shadowRadius: 30,
   },
   boxAnimated: {
     flexDirection: 'row',
-    width: 130,
+    width: 120,
     justifyContent: 'space-between',
   },
   textAnimated: {
     color: 'black',
-    fontSize: 17,
-    fontWeight: '900',
+    fontSize: 14,
+    fontWeight: '700',
   },
   Icon: {
     backgroundColor: '#eee',
@@ -196,12 +219,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   buttonx: {
     width: 40,
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  textErrorModalList: {
+    fontFamily: 'Open Sans',
+    fontSize: 11,
+    lineHeight: 12,
+    color: '#EC2626',
+    top: 5,
   },
 });
 

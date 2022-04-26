@@ -21,7 +21,6 @@ export default function ListMovies({navigation, route}) {
   const [movieId, SetMovieId] = useState(null);
   const [itemId, setItemId] = useState(null);
   const [modalVisibleSucess, setModalVisibleSucess] = useState(false);
-
   async function awaitDetailsList() {
     const dataDetailsList = await getDetailsList(idList);
     setDetailsList(dataDetailsList);
@@ -40,9 +39,9 @@ export default function ListMovies({navigation, route}) {
     awaitDetailsList();
   }
 
-  useEffect(() => {
+  useEffect(()=>{
     movieId && deleteMovies(movieId);
-  }, [movieId]);
+  },[movieId])
 
   const renderHeader = () => {
     return (
@@ -74,7 +73,6 @@ export default function ListMovies({navigation, route}) {
       </View>
     );
   };
-
   const renderItem = ({item}) => {
     if (item.empty === true) {
       return <View style={[styles.boxImage, styles.itemInvisible]} />;
@@ -103,11 +101,7 @@ export default function ListMovies({navigation, route}) {
           setModalVisibleSucess={setModalVisibleSucess}
           modalVisibleSucess={modalVisibleSucess}
           SetMovieId={SetMovieId}
-          sessionId={sessionId}
-          detailsListId={detailsList.id}
           itemId={itemId}
-          movieId={movieId}
-          awaitDetailsList={awaitDetailsList}
         />
       </View>
     );

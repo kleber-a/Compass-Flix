@@ -21,6 +21,7 @@ export default function TvShows({route, navigation}) {
   const [season, setSeason] = useState(null);
   const [selection, setSelection] = useState(false);
   const [bodyHeight, setBodyHeight] = useState(new Animated.Value(-500));
+
   Animated.timing(bodyHeight, {
     duration: 1000,
     toValue: 0,
@@ -30,7 +31,7 @@ export default function TvShows({route, navigation}) {
   const iconArrow = new Animated.Value(0);
   Animated.timing(iconArrow, {
     toValue: 1,
-    duration: 500,
+    duration: 300,
     easing: Easing.ease,
     useNativeDriver: false,
   }).start();
